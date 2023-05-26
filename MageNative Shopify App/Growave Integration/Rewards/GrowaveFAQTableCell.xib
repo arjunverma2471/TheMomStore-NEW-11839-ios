@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GrowaveFAQTableCell" rowHeight="179" id="2pM-41-Kio" customClass="GrowaveFAQTableCell" customModule="Magenative_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="433" height="179"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2pM-41-Kio" id="1gh-eS-0Be">
+                <rect key="frame" x="0.0" y="0.0" width="433" height="179"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLk-cm-CEQ">
+                        <rect key="frame" x="8" y="8" width="417" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="v62-Ld-xdg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-Qn-bon">
+                        <rect key="frame" x="8" y="56" width="417" height="115"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WLk-cm-CEQ" firstAttribute="leading" secondItem="1gh-eS-0Be" secondAttribute="leading" constant="8" id="AdX-ya-QrY"/>
+                    <constraint firstAttribute="trailing" secondItem="PLP-Qn-bon" secondAttribute="trailing" constant="8" id="MKv-gV-AAg"/>
+                    <constraint firstItem="PLP-Qn-bon" firstAttribute="leading" secondItem="1gh-eS-0Be" secondAttribute="leading" constant="8" id="Nkv-Ug-Npb"/>
+                    <constraint firstAttribute="trailing" secondItem="WLk-cm-CEQ" secondAttribute="trailing" constant="8" id="ibf-zt-LE8"/>
+                    <constraint firstItem="WLk-cm-CEQ" firstAttribute="top" secondItem="1gh-eS-0Be" secondAttribute="top" constant="8" id="ipN-SY-cjk"/>
+                    <constraint firstAttribute="bottom" secondItem="PLP-Qn-bon" secondAttribute="bottom" constant="8" id="jGc-e9-dhH"/>
+                    <constraint firstItem="PLP-Qn-bon" firstAttribute="top" secondItem="WLk-cm-CEQ" secondAttribute="bottom" constant="8" id="qZ0-Kl-VEZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="heading" destination="WLk-cm-CEQ" id="uHy-m8-BV1"/>
+                <outlet property="subHeading" destination="PLP-Qn-bon" id="GZW-nP-Kni"/>
+            </connections>
+            <point key="canvasLocation" x="167.17557251908397" y="-6.6901408450704229"/>
+        </tableViewCell>
+    </objects>
+</document>

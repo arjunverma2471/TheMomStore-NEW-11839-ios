@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeAnnouncementBarCell" rowHeight="323" id="6vJ-cr-h7E" customClass="HomeAnnouncementBarCell" customModule="Magenative_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="536" height="323"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6vJ-cr-h7E" id="9YF-OW-ttI">
+                <rect key="frame" x="0.0" y="0.0" width="536" height="323"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMy-oK-N4f">
+                        <rect key="frame" x="8" y="0.0" width="520" height="323"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTY-MI-29v">
+                        <rect key="frame" x="0.0" y="0.0" width="536" height="323"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </imageView>
+                    <wkWebView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIN-LO-Lgb">
+                        <rect key="frame" x="0.0" y="0.0" width="536" height="323"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
+                    </wkWebView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="pTY-MI-29v" secondAttribute="trailing" id="1tb-hf-sfa"/>
+                    <constraint firstItem="pTY-MI-29v" firstAttribute="leading" secondItem="9YF-OW-ttI" secondAttribute="leading" id="7wx-Dh-AlT"/>
+                    <constraint firstItem="pTY-MI-29v" firstAttribute="top" secondItem="9YF-OW-ttI" secondAttribute="top" id="Jxi-kX-kQb"/>
+                    <constraint firstAttribute="bottom" secondItem="AIN-LO-Lgb" secondAttribute="bottom" id="Wpg-Qx-XTK"/>
+                    <constraint firstItem="AIN-LO-Lgb" firstAttribute="leading" secondItem="9YF-OW-ttI" secondAttribute="leading" id="iCd-Tt-DLJ"/>
+                    <constraint firstAttribute="bottom" secondItem="pTY-MI-29v" secondAttribute="bottom" id="nX0-0A-SED"/>
+                    <constraint firstItem="sMy-oK-N4f" firstAttribute="top" secondItem="9YF-OW-ttI" secondAttribute="top" id="ph9-N7-tjL"/>
+                    <constraint firstAttribute="bottom" secondItem="sMy-oK-N4f" secondAttribute="bottom" id="vnE-b0-dSe"/>
+                    <constraint firstItem="sMy-oK-N4f" firstAttribute="leading" secondItem="9YF-OW-ttI" secondAttribute="leading" constant="8" id="wQ4-U7-Pew"/>
+                    <constraint firstAttribute="trailing" secondItem="AIN-LO-Lgb" secondAttribute="trailing" id="xyJ-oh-qDZ"/>
+                    <constraint firstAttribute="trailing" secondItem="sMy-oK-N4f" secondAttribute="trailing" constant="8" id="y5Z-fc-Iqh"/>
+                    <constraint firstItem="AIN-LO-Lgb" firstAttribute="top" secondItem="9YF-OW-ttI" secondAttribute="top" id="yRr-tg-Xqw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="announcementImage" destination="pTY-MI-29v" id="6Q0-s1-vhV"/>
+                <outlet property="announcementText" destination="sMy-oK-N4f" id="chs-JR-SKk"/>
+                <outlet property="marqueeWebView" destination="AIN-LO-Lgb" id="ogJ-z7-144"/>
+            </connections>
+            <point key="canvasLocation" x="421" y="-22"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

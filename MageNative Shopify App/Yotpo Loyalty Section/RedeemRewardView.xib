@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Medium.ttf">
+            <string>Cairo-Medium</string>
+        </array>
+        <array key="Cairo-Regular.ttf">
+            <string>Cairo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RedeemRewardView" customModule="Magenative_App" customModuleProvider="target">
+            <connections>
+                <outlet property="closeBtn" destination="yzL-Hz-CJk" id="xH6-6T-x6X"/>
+                <outlet property="copyBtn" destination="y7k-G8-SPt" id="zCk-g6-W6j"/>
+                <outlet property="descriptionTxt" destination="gHK-qr-83N" id="Cxp-92-wNM"/>
+                <outlet property="headingTxt" destination="iW1-dq-69C" id="1K5-od-t3v"/>
+                <outlet property="outerView" destination="B2s-7p-BXb" id="d2J-LV-S9e"/>
+                <outlet property="redeemBtn" destination="MbT-4x-7pz" id="bi5-qP-hHJ"/>
+                <outlet property="resultTxt" destination="0nN-iS-ltK" id="d7Z-GA-v4H"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="507" height="329"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irl-jB-xKC">
+                    <rect key="frame" x="4" y="4" width="499" height="321"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iW1-dq-69C">
+                            <rect key="frame" x="4" y="4" width="491" height="48"/>
+                            <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="20"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2s-7p-BXb">
+                            <rect key="frame" x="0.0" y="56" width="499" height="265"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHK-qr-83N">
+                                    <rect key="frame" x="8" y="8" width="483" height="42"/>
+                                    <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nN-iS-ltK">
+                                    <rect key="frame" x="8" y="58" width="483" height="58"/>
+                                    <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbT-4x-7pz">
+                                    <rect key="frame" x="149.5" y="219" width="200" height="30"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="15"/>
+                                    <state key="normal" title="Redeem">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7k-G8-SPt">
+                                    <rect key="frame" x="162" y="181" width="175" height="30"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="j3D-jo-Lyw"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="18"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="6" maxX="6" maxY="6"/>
+                                    <state key="normal" title="Copy" image="copy-symbol">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="MbT-4x-7pz" firstAttribute="height" secondItem="B2s-7p-BXb" secondAttribute="height" multiplier="0.113208" id="0oe-fj-Y0K"/>
+                                <constraint firstItem="y7k-G8-SPt" firstAttribute="centerX" secondItem="B2s-7p-BXb" secondAttribute="centerX" id="17c-D2-oI1"/>
+                                <constraint firstItem="gHK-qr-83N" firstAttribute="height" secondItem="B2s-7p-BXb" secondAttribute="height" multiplier="0.158491" id="1IO-xk-bNa"/>
+                                <constraint firstAttribute="trailing" secondItem="gHK-qr-83N" secondAttribute="trailing" constant="8" id="1PJ-uH-VJC"/>
+                                <constraint firstAttribute="trailing" secondItem="0nN-iS-ltK" secondAttribute="trailing" constant="8" id="229-Ei-e4a"/>
+                                <constraint firstItem="MbT-4x-7pz" firstAttribute="width" secondItem="B2s-7p-BXb" secondAttribute="width" multiplier="0.4" id="2P6-zn-Dve"/>
+                                <constraint firstItem="MbT-4x-7pz" firstAttribute="top" secondItem="y7k-G8-SPt" secondAttribute="bottom" constant="8" symbolic="YES" id="CX8-Mg-mYz"/>
+                                <constraint firstItem="MbT-4x-7pz" firstAttribute="centerX" secondItem="B2s-7p-BXb" secondAttribute="centerX" id="ENJ-vI-8UA"/>
+                                <constraint firstItem="gHK-qr-83N" firstAttribute="leading" secondItem="B2s-7p-BXb" secondAttribute="leading" constant="8" id="FHC-XI-VNh"/>
+                                <constraint firstItem="0nN-iS-ltK" firstAttribute="height" secondItem="B2s-7p-BXb" secondAttribute="height" multiplier="0.218868" id="FzS-JJ-YvW"/>
+                                <constraint firstItem="0nN-iS-ltK" firstAttribute="leading" secondItem="B2s-7p-BXb" secondAttribute="leading" constant="8" id="R0B-lr-G0Q"/>
+                                <constraint firstItem="y7k-G8-SPt" firstAttribute="width" secondItem="B2s-7p-BXb" secondAttribute="width" multiplier="0.35" id="dCr-C3-TUa"/>
+                                <constraint firstItem="gHK-qr-83N" firstAttribute="top" secondItem="B2s-7p-BXb" secondAttribute="top" constant="8" id="ftW-fJ-f4g"/>
+                                <constraint firstItem="0nN-iS-ltK" firstAttribute="top" secondItem="gHK-qr-83N" secondAttribute="bottom" constant="8" id="jHu-r6-hNF"/>
+                                <constraint firstAttribute="bottom" secondItem="MbT-4x-7pz" secondAttribute="bottom" constant="16" id="oQM-oV-IVy"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzL-Hz-CJk">
+                            <rect key="frame" x="466" y="8" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="CrQ-Sm-JAg"/>
+                                <constraint firstAttribute="width" constant="25" id="dah-9V-Eod"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="15"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="close-cross"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="B2s-7p-BXb" firstAttribute="top" secondItem="iW1-dq-69C" secondAttribute="bottom" constant="4" id="1mx-YZ-jwT"/>
+                        <constraint firstItem="iW1-dq-69C" firstAttribute="leading" secondItem="irl-jB-xKC" secondAttribute="leading" constant="4" id="9eb-BD-asT"/>
+                        <constraint firstItem="iW1-dq-69C" firstAttribute="top" secondItem="irl-jB-xKC" secondAttribute="top" constant="4" id="Ci6-eY-beF"/>
+                        <constraint firstAttribute="bottom" secondItem="B2s-7p-BXb" secondAttribute="bottom" id="LLI-f6-aSq"/>
+                        <constraint firstItem="B2s-7p-BXb" firstAttribute="leading" secondItem="irl-jB-xKC" secondAttribute="leading" id="OKx-A2-Vn6"/>
+                        <constraint firstAttribute="trailing" secondItem="iW1-dq-69C" secondAttribute="trailing" constant="4" id="beA-Un-HOk"/>
+                        <constraint firstItem="iW1-dq-69C" firstAttribute="height" secondItem="irl-jB-xKC" secondAttribute="height" multiplier="0.15" id="dyb-vc-lZy"/>
+                        <constraint firstAttribute="trailing" secondItem="B2s-7p-BXb" secondAttribute="trailing" id="eTn-my-s4B"/>
+                        <constraint firstAttribute="trailing" secondItem="yzL-Hz-CJk" secondAttribute="trailing" constant="8" id="sTw-NX-Uet"/>
+                        <constraint firstItem="yzL-Hz-CJk" firstAttribute="top" secondItem="irl-jB-xKC" secondAttribute="top" constant="8" id="tZS-Qi-NLQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="irl-jB-xKC" secondAttribute="trailing" constant="4" id="2h3-Ik-S00"/>
+                <constraint firstAttribute="bottom" secondItem="irl-jB-xKC" secondAttribute="bottom" constant="4" id="EtX-6x-tB0"/>
+                <constraint firstItem="irl-jB-xKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="XBl-lm-8EV"/>
+                <constraint firstItem="irl-jB-xKC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="fRF-NU-VLH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="299.27536231884062" y="-77.34375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close-cross" width="32" height="32"/>
+        <image name="copy-symbol" width="32" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

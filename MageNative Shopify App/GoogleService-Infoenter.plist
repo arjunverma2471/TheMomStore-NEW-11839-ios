@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>546766386305-mjl9aenuciabm80vmtglmilkr0djjb1r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.546766386305-mjl9aenuciabm80vmtglmilkr0djjb1r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>546766386305-5mpv34dd0n3vvnh3ddapvifjdskgh1sn.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDd829QpZm_xdsPVwkZYpLxZpzWKX1q7k0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>546766386305</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.magenative.ShopifyApps</string>
+	<key>PROJECT_ID</key>
+	<string>shopifyapp-ad4b8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>shopifyapp-ad4b8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:546766386305:ios:ab75e60894488e87094980</string>
+	<key>DATABASE_URL</key>
+	<string>https://shopifyapp-ad4b8.firebaseio.com</string>
+</dict>
+</plist>

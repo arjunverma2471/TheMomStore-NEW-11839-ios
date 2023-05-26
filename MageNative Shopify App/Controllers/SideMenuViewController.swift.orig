@@ -1,0 +1,877 @@
+/**
+ * CedCommerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End User License Agreement (EULA)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://cedcommerce.com/license-agreement.txt
+ *
+ * @category  Ced
+ * @package   MageNative
+ * @author    CedCommerce Core Team <connect@cedcommerce.com >
+ * @copyright Copyright CEDCOMMERCE (http://cedcommerce.com/)
+ * @license      http://cedcommerce.com/license-agreement.txt
+ */
+
+import UIKit
+import RATreeView
+import AVFoundation
+
+class SideMenuViewController: UIViewController,SWRevealViewControllerDelegate {
+  
+  var treeView : RATreeView!
+  var menus : [MenuObject] = []
+  let endPoint = "shop-mobile/shopifyapi/getnewcategorymenus?mid="//"shopifymobile/shopifyapi/getcategorymenus?mid="
+  var checker:MenuObject?=nil
+    var shopCountry:CurrencyViewModel?
+  override func viewDidLoad() {
+    super.viewDidLoad()
+      Client.shared.currencyCode(completion:  {
+        response in
+        self.shopCountry = response
+          self.treeView.reloadData()
+      })
+      
+    setupTreeView()
+    getMenuData()
+    self.revealViewController().delegate = self
+    self.revealViewController().frontViewShadowColor = .black
+    NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData(_:)), name: NSNotification.Name(rawValue: "loadDrawerAgain"), object: nil);
+      
+  }
+  
+  @objc func reloadData(_ notification: NSNotification) {
+    self.menus.removeAll()
+    getMenuData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let overView = UIView()
+    overView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    overView.tag = 123
+    overView.frame = self.revealViewController().frontViewController.view.frame
+    self.revealViewController().frontViewController.view.addSubview(overView)
+    self.revealViewController().frontViewController.view.bringSubviewToFront(overView)
+    self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
+   // self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.revealViewController().frontViewController.view.isUserInteractionEnabled = true
+    self.revealViewController().frontViewController.view.viewWithTag(123)?.removeFromSuperview()
+  }
+  
+  func setupTreeView()
+  {
+    for item in view.subviews{
+      if let temp=item as? RATreeView{
+        temp.removeFromSuperview()
+      }
+    }
+    treeView = RATreeView(frame: view.frame)
+    treeView.separatorStyle = RATreeViewCellSeparatorStyle(0)
+    treeView.register(UINib(nibName: String(describing: SideMenuTableCell.self), bundle: nil), forCellReuseIdentifier: SideMenuTableCell.className)
+    treeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    treeView.treeHeaderView = UIView()
+    treeView.treeFooterView = UIView()
+    view.addSubview(treeView)
+    treeView.delegate = self;
+    treeView.dataSource = self;
+      
+  }
+  
+  func getMenuData()
+  {
+    if Client.shared.isAppLogin(){
+      Client.shared.fetchCustomerDetails(completeion: {
+        response,error in
+        if let response = response {
+          let name = response.displayName! + ""
+          self.menus.insert(MenuObject(name: "Hey! ".localized + name + "\n"+"Save, shop and view order".localized, id: "loginHeader", image: "",type: "loginHeader",url: ""), at: 0)
+        }
+      })
+    }
+    else
+    {
+      self.menus.append(MenuObject(name: "Sign In".localized+"\n"+"Save, shop and view order".localized.localized, id: "loginHeader", image: "",type: "loginHeader",url: ""))
+    }
+    self.menus.append(MenuObject(name: "Shop By Categories".localized, id: "", image: "",type: "Shop By Categories",url: ""))
+<<<<<<< HEAD
+      Client.shared.fetchShopBlog { blogsModel in
+          if let blogs = blogsModel{
+              
+              guard let url = (AppSetUp.baseUrl + self.endPoint + Client.merchantID).getURL() else {return}
+              var request = URLRequest(url: url)
+              request.httpMethod="GET"
+              request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+              request.cachePolicy = URLRequest.CachePolicy.returnCacheDataElseLoad
+              self.view.addLoader()
+              AF.request(request).responseData(completionHandler: {
+                response in
+                self.view.stopLoader()
+                switch response.result {
+                case .success:
+                  
+                  do {
+                    if  let json = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [String : Any] {
+                      if let jsonData=json["data"] as? [Any]{
+                        print(jsonData)
+                        for item in jsonData.dropFirst(0){
+                          if let menus=item as? [String:Any]{
+                            if let submenus = menus["menus"] as? [Any]{
+                              let db = self.fechSubMenu(submenus)
+                              let temp=MenuObject(name: menus["title"] as! String, children: db, id: "123", image: "",type: "",url: "")
+                              self.menus.append(temp)
+                            }
+                            else
+                            {
+                                if(menus["type"] as! String != "blog")
+                                {
+                                  let temp=MenuObject(name: menus["title"] as! String, id: String(describing: menus["id"]), image: "",type: String(describing: menus["type"]),url: String(describing: menus["url"] ))
+                                  self.menus.append(temp)
+                              }
+                              
+                            }
+                          }
+                          
+                        }
+                      }
+                        for index in blogs.items{
+                            let temp=MenuObject(name: index.title, id: "", image: "", type: "blog", url: index.onlineStoreUrl?.absoluteString ?? "" )
+                                                  self.menus.append(temp)
+                        }
+          //              Client.shared.fetchShopBlog { blogsModel in
+          //                  for index in blogsModel!{
+          //                      let temp=MenuObject(name: index.title, id: "", image: "", type: "blog", url: index.onlineStoreUrl?.absoluteString ?? "" )
+          //                      self.menus.append(temp)
+          //                  }
+          //              }
+                        
+                      //self.menus.append(MenuObject(name: "Select Your Currency".localized, id: "", image: "",type: "currency",url: ""))
+                      //self.menus.append(MenuObject(name: "Language".localized, id: "", image: "",type: "lang",url: ""))
+                      
+                      if(Client.merchantPreview)
+                      {
+                        self.menus.append(MenuObject(name: "Live Preview Of Your Store".localized, id: "123", image: "",type: "qrcode",url: ""))
+                      }
+                      
+                      self.menus.append(MenuObject(name: "Your Account".localized, id: "", image: "",type: "loginHeader",url: ""))
+                      self.menus.append(MenuObject(name: "Home".localized, id: "", image: "My Cart",type: "static",url: ""))
+                      self.menus.append(MenuObject(name: "My Cart".localized, id: "", image: "My Cart",type: "static",url: ""))
+                      self.menus.append(MenuObject(name: "My WishList".localized, id: "", image: "Favourite",type: "static",url: ""))
+                      
+                      self.menus.append(MenuObject(name: "My Account".localized, id: "", image: "user",type: "static",url: ""))
+                        if customAppSettings.sharedInstance.smileIntegration {
+                            self.menus.append(MenuObject(name: "Rewards".localized, id: "", image: "",type: "smile",url: ""))
+                        }
+                      if customAppSettings.sharedInstance.multiCurrency {
+                        self.menus.append(MenuObject(name: "Select Country".localized, id: "", image: "",type: "currency",url: ""))
+                      }
+                      
+                      if customAppSettings.sharedInstance.yotpoLoyalty {
+                          self.menus.append(MenuObject(name: "Earn Rewards".localized, id: "", image: "",type: "rewards",url: ""))
+                      }
+                      
+                      self.menus.append(MenuObject(name: "Invite Your Friend".localized, id: "", image: "",type: "static",url: ""))
+                       if Client.shared.isAppLogin() {
+                        self.menus.append(MenuObject(name: "Logout".localized, id: "", image: "",type: "logout",url: ""))
+                      }
+                      
+                      self.menus.append(MenuObject(name: "".localized, id: "123", image: "",type: "",url: "gap"))
+                      self.menus.append(MenuObject(name:  "App Version ".localized + (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0" ) + "\n© "+(Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""), id: "123", image: "",type: "loginHeader2",url: ""))
+                      
+                      /* let ref = BaseViewController.secondaryDb?.reference(withPath: Client.shopUrl.replacingOccurrences(of: ".myshopify.com", with: ""))
+                       ref?.child("features").observe(.value, with: {
+                       snapshot in
+                       if let dataObject = snapshot.value as? [String] {
+                       if(dataObject.contains("multi-currency")){
+                       self.menus.append(MenuObject(name: "Select Your Currency".localized, id: "", image: "",type: "currency",url: ""))
+                       self.treeView.reloadData()
+                       }
+                       }
+                       })*/
+                      //self.menus.append(MenuObject(name: "Check Gift Card Balance", id: "123", image: "",type: "links",url: ""))
+                      /*self.menus.append(MenuObject(name: "Privacy Policy".localized, id: "123", image: "",type: "links",url: ""))
+                       self.menus.append(MenuObject(name: "Refund Policy".localized, id: "123", image: "",type: "links",url: ""))
+                       self.menus.append(MenuObject(name: "Terms of services".localized, id: "123", image: "",type: "links",url: ""))
+                       self.menus.append(MenuObject(name: "Contact Us".localized, id: "123", image: "",type: "contact",url: ""))*/
+                      
+                      self.treeView.reloadData()
+                      print(self.menus)
+                    }
+                  }
+                  catch let error {
+                    print(error.localizedDescription)
+                  }
+                case .failure:
+                  print("failure")
+                }
+              })
+          }
+      }
+    
+=======
+      if let url = (AppSetUp.baseUrl + endPoint + Client.merchantID).getURL() {  //else {return}
+    var request = URLRequest(url: url)
+    request.httpMethod="GET"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.cachePolicy = URLRequest.CachePolicy.returnCacheDataElseLoad
+    self.view.addLoader()
+    AF.request(request).responseData(completionHandler: {
+      response in
+      self.view.stopLoader()
+      switch response.result {
+      case .success:
+        
+        do {
+          if  let json = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [String : Any] {
+            if let jsonData=json["data"] as? [Any]{
+              print(jsonData)
+              for item in jsonData.dropFirst(0){
+                if let menus=item as? [String:Any]{
+                    
+                  if let submenus = menus["menus"] as? [Any]{
+                      if submenus.count > 0 {
+                          let db = self.fechSubMenu(submenus)
+                          let temp=MenuObject(name: menus["title"] as! String, children: db, id: "123", image: "",type: "",url: "")
+                          self.menus.append(temp)
+                      }
+                      else
+                      {
+                        
+                        let temp=MenuObject(name: menus["title"] as! String, id: String(describing: menus["id"]), image: "",type: String(describing: menus["type"]),url: String(describing: menus["url"] ))
+                        self.menus.append(temp)
+                      }
+                    
+                  }
+                  
+                }
+                
+              }
+            }
+            //self.menus.append(MenuObject(name: "Select Your Currency".localized, id: "", image: "",type: "currency",url: ""))
+            //self.menus.append(MenuObject(name: "Language".localized, id: "", image: "",type: "lang",url: ""))
+            
+            
+            
+            /* let ref = BaseViewController.secondaryDb?.reference(withPath: Client.shopUrl.replacingOccurrences(of: ".myshopify.com", with: ""))
+             ref?.child("features").observe(.value, with: {
+             snapshot in
+             if let dataObject = snapshot.value as? [String] {
+             if(dataObject.contains("multi-currency")){
+             self.menus.append(MenuObject(name: "Select Your Currency".localized, id: "", image: "",type: "currency",url: ""))
+             self.treeView.reloadData()
+             }
+             }
+             })*/
+            //self.menus.append(MenuObject(name: "Check Gift Card Balance", id: "123", image: "",type: "links",url: ""))
+            /*self.menus.append(MenuObject(name: "Privacy Policy".localized, id: "123", image: "",type: "links",url: ""))
+             self.menus.append(MenuObject(name: "Refund Policy".localized, id: "123", image: "",type: "links",url: ""))
+             self.menus.append(MenuObject(name: "Terms of services".localized, id: "123", image: "",type: "links",url: ""))
+             self.menus.append(MenuObject(name: "Contact Us".localized, id: "123", image: "",type: "contact",url: ""))*/
+              self.getMoreData()
+           // self.treeView.reloadData()
+            print(self.menus)
+          }
+        }
+        catch let error {
+          print(error.localizedDescription)
+        }
+      case .failure:
+        print("failure")
+          self.getMoreData()
+            }
+        })
+      }
+      
+>>>>>>> minor_fixes
+    
+    /*if(Client.merchantPreview){
+     self.menus.append(MenuObject(name: "Live Preview Of Your Store".localized, id: "123", image: "",type: "qrcode",url: ""))
+     }
+     self.menus.append(MenuObject(name: "Shop By Categories".localized, id: "", image: "",type: "collect",url: ""))
+     self.menus.append(MenuObject(name: "Select Your Currency".localized, id: "", image: "",type: "currency",url: ""))
+     self.menus.append(MenuObject(name: "Privacy Policy".localized, id: "123", image: "",type: "links",url: ""))
+     self.menus.append(MenuObject(name: "Refund Policy".localized, id: "123", image: "",type: "links",url: ""))
+     self.menus.append(MenuObject(name: "Terms of services".localized, id: "123", image: "",type: "links",url: ""))
+     self.menus.append(MenuObject(name: "Contact Us".localized, id: "123", image: "",type: "contact",url: ""))*/
+    
+    //self.treeView.reloadData()
+  }
+    
+    func getMoreData() {
+        if(Client.merchantPreview)
+        {
+          self.menus.append(MenuObject(name: "Live Preview Of Your Store".localized, id: "123", image: "",type: "qrcode",url: ""))
+        }
+        
+        self.menus.append(MenuObject(name: "Your Account".localized, id: "", image: "",type: "loginHeader",url: ""))
+        self.menus.append(MenuObject(name: "Home".localized, id: "", image: "My Cart",type: "static",url: ""))
+        self.menus.append(MenuObject(name: "My Cart".localized, id: "", image: "My Cart",type: "static",url: ""))
+          if customAppSettings.sharedInstance.inAppWishlist {
+              self.menus.append(MenuObject(name: "My WishList".localized, id: "", image: "Favourite",type: "static",url: ""))
+          }
+        self.menus.append(MenuObject(name: "My Account".localized, id: "", image: "user",type: "static",url: ""))
+        
+        if customAppSettings.sharedInstance.multiCurrency {
+          self.menus.append(MenuObject(name: "Select Your Currency".localized, id: "", image: "",type: "currency",url: ""))
+        }
+        
+        if customAppSettings.sharedInstance.yotpoLoyalty {
+            self.menus.append(MenuObject(name: "Earn Rewards".localized, id: "", image: "",type: "rewards",url: ""))
+        }
+        
+        self.menus.append(MenuObject(name: "Invite Your Friend".localized, id: "", image: "",type: "static",url: ""))
+         if Client.shared.isAppLogin() {
+          self.menus.append(MenuObject(name: "Logout".localized, id: "", image: "",type: "logout",url: ""))
+        }
+        
+        self.menus.append(MenuObject(name: "".localized, id: "123", image: "",type: "",url: "gap"))
+        self.menus.append(MenuObject(name:  "App Version ".localized + (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0" ) + "\n© "+(Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""), id: "123", image: "",type: "loginHeader2",url: ""))
+        
+        self.treeView.reloadData()
+    }
+  
+  func fechSubMenu(_ submenus: [Any]) -> [MenuObject]{
+    var dataObjects=[MenuObject]()
+    for item in submenus{
+      if let menus=item as? [String:Any]{
+        if let submenu = menus["menus"] as? [Any]{
+          let db=fechSubMenu(submenu)
+          let temp=MenuObject(name: menus["title"] as! String, children: db, id: "123", image: "",type: "",url: "")
+          dataObjects.append(temp)
+        }
+        else
+        {
+          let db=MenuObject(name: menus["title"] as! String, id: String(describing: menus["id"]), image: "",type: String(describing: menus["type"]),url: String(describing: menus["url"] ))
+          dataObjects.append(db)
+        }
+      }
+    }
+    return dataObjects
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+}
+
+extension SideMenuViewController:RATreeViewDataSource {
+  
+  func treeView(_ treeView: RATreeView, numberOfChildrenOfItem item: Any?) -> Int {
+    
+    if let item = item as? MenuObject {
+      return item.children.count
+    }
+    else {
+      return self.menus.count
+    }
+  }
+  
+  func treeView(_ treeView: RATreeView, heightForRowForItem item: Any) -> CGFloat {
+    let item = item as! MenuObject
+    if item.type == "loginHeader" {
+      return 55
+    }
+    else if item.type == "loginHeader2" || item.type == "qrcode" {
+      return 65
+    }
+    return 40
+  }
+  
+  
+  func treeView(_ treeView: RATreeView, child index: Int, ofItem item: Any?) -> Any {
+    if let item = item as? MenuObject {
+      return item.children[index]
+    } else {
+      return menus[index] as AnyObject
+    }
+  }
+  
+  func treeView(_ treeView: RATreeView, cellForItem item: Any?) -> UITableViewCell {
+    let cell = treeView.dequeueReusableCell(withIdentifier: SideMenuTableCell.className) as! SideMenuTableCell
+    let item = item as! MenuObject
+    
+    let level = treeView.levelForCell(forItem: item)
+    //let detailsText = "Number of children \(item.children.count)"
+    cell.selectionStyle = .none
+    cell.setup(from: item, level: level)
+    
+    if item.children.count > 0 {
+      cell.rightImage.isHidden=false
+      cell.rightImage.image = UIImage(named: "rightArrow")
+    }
+    else {
+      cell.rightImage.isHidden=true
+    }
+    return cell
+  }
+  
+  func treeView(_ treeView: RATreeView, canEditRowForItem item: Any) -> Bool {
+    return false
+  }
+  
+  func treeView(_ treeView: RATreeView, didExpandRowForItem item: Any) {
+    if let cell = treeView.cell(forItem: item) as? SideMenuTableCell {
+      cell.rightImage.image = UIImage(named: "bottomArrow")
+    }
+  }
+  
+  func treeView(_ treeView: RATreeView, didCollapseRowForItem item: Any) {
+    if let cell = treeView.cell(forItem: item) as? SideMenuTableCell {
+      cell.rightImage.image = UIImage(named: "rightArrow")
+    }
+  }
+}
+
+extension SideMenuViewController:RATreeViewDelegate {
+  
+  func treeView(_ treeView: RATreeView, didSelectRowForItem item: Any) {
+    let seletedMenu = item as! MenuObject
+    let type = returnString(strToModify:seletedMenu.type)
+    switch type {
+    
+    case "loginHeader":
+      if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+        self.revealViewController().revealToggle(animated: true)
+        if Client.shared.isAppLogin(){
+          tabbarControl.selectedIndex = 4
+        }
+        else
+        {
+          if let loginNavigation = self.storyboard?.instantiateViewController(withIdentifier:"LoginNavigationController") {
+            loginNavigation.modalPresentationStyle = .fullScreen
+            self.present(loginNavigation, animated: true, completion: nil)
+          }
+        }
+      }
+    case "Shop By Categories" :
+        self.revealViewController().revealToggle(animated: true)
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          tabbarControl.selectedIndex = 1;
+        }
+    case "collect":
+      self.revealViewController().revealToggle(animated: true)
+      //let viewController:CollectionViewController = self.storyboard!.instantiateViewController()
+      
+      if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+        /*if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+         navigation.pushViewController(viewController, animated: true)
+         }*/
+        tabbarControl.selectedIndex = 1;
+      }
+      break;
+      
+    case "qrcode":
+      let cameraMediaType = AVMediaType.video
+      let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
+      self.revealViewController().revealToggle(animated: true)
+      if(cameraAuthorizationStatus == .notDetermined){
+        AVCaptureDevice.requestAccess(for: cameraMediaType) { granted in
+          DispatchQueue.main.async {
+            if granted {
+              print("Granted access to \(cameraMediaType)")
+              let viewController:ScanViewController = self.storyboard!.instantiateViewController()
+              if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+                if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+                  navigation.pushViewController(viewController, animated: true)
+                }
+              }
+            }
+            else
+            {
+              let alertController = UIAlertController(
+                title: "Camera Access Disabled",
+                message: "Please open this app's settings and set Camera access to 'Always'.",
+                preferredStyle: .alert)
+              
+              let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+              alertController.addAction(cancelAction)
+              
+              let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+                if let url = NSURL(string:UIApplication.openSettingsURLString) {
+                  UIApplication.shared.open(url as URL)
+                }
+              }
+              alertController.addAction(openAction)
+              alertController.modalPresentationStyle = .fullScreen
+              self.present(alertController, animated: true, completion: nil)
+            }
+          }
+        }
+      }
+      else if(cameraAuthorizationStatus == .restricted){
+        break;
+      }
+      else if(cameraAuthorizationStatus == .denied){
+        let alertController = UIAlertController(
+          title: "Camera Access Disabled",
+          message: "Please open this app's settings and set Camera access to 'Always'.",
+          preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+          if let url = NSURL(string:UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url as URL)
+          }
+        }
+        alertController.addAction(openAction)
+        self.present(alertController, animated: true, completion: nil)
+      }
+      else if(cameraAuthorizationStatus == .authorized){
+        let viewController:ScanViewController = self.storyboard!.instantiateViewController()
+        
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+            navigation.pushViewController(viewController, animated: true)
+          }
+        }
+      }
+    case "smile" :
+        if !Client.shared.isAppLogin() {
+            if let loginNavigation = self.storyboard?.instantiateViewController(withIdentifier:"LoginNavigationController") {
+                loginNavigation.modalPresentationStyle = .fullScreen
+                self.present(loginNavigation, animated: true, completion: nil)
+            }
+        }else{
+            Client.shared.fetchCustomerDetails(completeion: {
+                response,error   in
+                if let response = response {
+                    var cid = ""
+                    if let str = response.customerId?.base64decode(){
+                        let str1 = str.components(separatedBy: "/")
+                        cid = str1.last!
+                        print(cid)
+                    }
+                    
+                    
+                    let viewController:WebViewController = self.storyboard!.instantiateViewController()
+                    viewController.url = ("https://shopifymobileapp.cedcommerce.com/shopifymobile/smilerewardapi/generateview?mid=\(Client.merchantID)&cid="+cid).getURL()
+                    if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+                      self.revealViewController().revealToggle(animated: true)
+                      if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+                        navigation.pushViewController(viewController, animated: true)
+                      }
+                    }
+                    
+                }else {
+                    self.showErrorAlert(error: error?.localizedDescription)
+                }
+            })
+        }
+    case "currency":
+      currencynavigate()
+    /*case "lang":
+     changeLanguagePressed()*/
+    case "page","blog":
+      if seletedMenu.children.count == 0 {
+        let url = returnString(strToModify: seletedMenu.url)
+        let viewController:WebViewController = storyboard!.instantiateViewController()
+          if type == "blog"{
+              viewController.url = url.getURL()
+          }
+          else{
+              viewController.url = ("https://" + Client.shopUrl + url).getURL()
+          }
+        
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+            navigation.pushViewController(viewController, animated: true)
+          }
+        }
+      }
+    case "rewards":
+        if Client.shared.isAppLogin() {
+            let viewControl:RewardPointsViewController = self.storyboard!.instantiateViewController()
+            if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+                self.revealViewController().revealToggle(animated: true)
+                if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+                    navigation.pushViewController(viewControl, animated: true)
+                }
+            }
+        }
+        else {
+            let viewControl:RewardViewController = self.storyboard!.instantiateViewController()
+            if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+                self.revealViewController().revealToggle(animated: true)
+                if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+                    navigation.pushViewController(viewControl, animated: true)
+                }
+            }
+        }
+    case "collection-all":
+      if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+        self.revealViewController().revealToggle(animated: true)
+        tabbarControl.selectedIndex = 1
+      }
+      
+    case "product-all":
+      let viewControl:ProductListViewController = self.storyboard!.instantiateViewController()
+      viewControl.isfromHome = true
+      viewControl.fetchAllProduct = true
+      viewControl.title = "All Products".localized
+      if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+        self.revealViewController().revealToggle(animated: true)
+        if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+          navigation.pushViewController(viewControl, animated: true)
+        }
+      }
+      
+    case "collection":
+      if seletedMenu.children.count == 0 {
+        let collectionId = returnString(strToModify: seletedMenu.id)
+        let coll = collection(id: collectionId, title: seletedMenu.name)
+        let viewControl:ProductListViewController = self.storyboard!.instantiateViewController()
+        viewControl.isfromHome = true
+        viewControl.collect = coll
+        viewControl.title = coll.title
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+            navigation.pushViewController(viewControl, animated: true)
+          }
+        }
+      }
+      
+    case "product":
+      let viewController:ProductViewController = storyboard!.instantiateViewController()
+      let productId = returnString(strToModify: seletedMenu.id)
+      let str="gid://shopify/Product/"+productId
+      let str1 = (str).data(using: String.Encoding.utf8)
+      let base64 = str1!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+      viewController.productId = base64
+      viewController.isProductLoading = true
+      
+      if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+        self.revealViewController().revealToggle(animated: true)
+        if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+          navigation.pushViewController(viewController, animated: true)
+        }
+      }
+      
+    case "links":
+      Client.shared.fetchShop(completion: {
+        response in
+        let viewController:WebViewController = self.storyboard!.instantiateViewController()
+        viewController.title = seletedMenu.name
+        if seletedMenu.name == "Privacy Policy".localized{
+          viewController.url = response?.privacyPolicyUrl
+        }else if seletedMenu.name == "Refund Policy".localized{
+          viewController.url = response?.refundPolicyUrl
+        }else if seletedMenu.name == "Terms of services".localized{
+          viewController.url = response?.termsOfService
+        }else{}
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+            navigation.pushViewController(viewController, animated: true)
+          }
+        }
+      })
+    case "contact":
+      let contactus:ContactUsViewController = self.storyboard!.instantiateViewController()
+      contactus.title = "Contact Us".localized
+      if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+        self.revealViewController().revealToggle(animated: true)
+        if let navigation = tabbarControl.viewControllers![tabbarControl.selectedIndex] as? UINavigationController {
+          navigation.pushViewController(contactus, animated: true)
+        }
+      }
+    case "static":
+      switch seletedMenu.name{
+      case "Home".localized:
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          tabbarControl.selectedIndex = 0
+        }
+      case "My Cart".localized:
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          tabbarControl.selectedIndex = 2
+        }
+      case "My WishList".localized:
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          tabbarControl.selectedIndex = 3
+        }
+      case "My Account".localized:
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          if Client.shared.isAppLogin(){
+              if customAppSettings.sharedInstance.inAppWishlist {
+                  tabbarControl.selectedIndex = 4
+              }
+              else {
+                  tabbarControl.selectedIndex = 3
+              }
+            
+          }else{
+            if let loginNavigation = self.storyboard?.instantiateViewController(withIdentifier:"LoginNavigationController") {
+              loginNavigation.modalPresentationStyle = .fullScreen
+              self.present(loginNavigation, animated: true, completion: nil)
+            }
+          }
+        }
+      case "Invite Your Friend".localized:
+        self.revealViewController().revealToggle(animated: true)
+          let url = Client.appLiveUrl
+        let vc = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil);
+        if(UIDevice().model.lowercased() == "ipad".lowercased()){
+          vc.popoverPresentationController?.sourceView = self.view
+        }
+        self.present(vc, animated: true, completion: nil);
+      default :
+        print("dDSD")
+      }
+      
+    case "logout" :
+      if Client.shared.doLogOut() {
+        NotificationCenter.default.post(name: NSNotification.Name("loadDrawerAgain"), object: nil)
+        if let tabbarControl =  self.revealViewController().frontViewController as? TabbarController {
+          self.revealViewController().revealToggle(animated: true)
+          tabbarControl.selectedIndex = 0
+        }
+      }
+      
+    default:
+     print("Default value pressed.")
+    }
+  }
+  
+  // use this when switching the language
+  /*func changeLanguagePressed()
+   {
+   let Stores = ["English","Arabic"]
+   if value[0]=="ar"
+   {
+   self.revealViewController().rightRevealToggle(animated: true)
+   }else{
+   self.revealViewController().revealToggle(animated: true)
+   }
+   let actionsheet = UIAlertController(title: "Select Language".localized, message: nil, preferredStyle: .alert)
+   
+   for item in Stores {
+   actionsheet.addAction(UIAlertAction(title: item, style: UIAlertActionStyle.default,handler: {
+   action -> Void in
+   self.selectStore(store:item)
+   }))
+   
+   }
+   actionsheet.addAction(UIAlertAction(title: "Cancel".localized, style: UIAlertActionStyle.cancel, handler: {
+   action -> Void in
+   }))
+   
+   self.present(actionsheet, animated: true, completion: nil)
+   }
+   func selectStore(store:String){
+   if store == "English"
+   {
+   UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+   UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
+   }
+   if store == "Arabic"
+   {
+   UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+   UserDefaults.standard.set(["ar"], forKey: "AppleLanguages")
+   }
+   load_app()
+   }*/
+  
+/*  func currencynavigate(){
+    Client.shared.fetchShop(completion: {
+      response in
+      self.revealViewController().revealToggle(animated: true)
+      if let response = response{
+        let currency = (response.model?.paymentSettings.enabledPresentmentCurrencies)!
+        let actionsheet = UIAlertController(title: "Select Currency", message: nil, preferredStyle: .alert)
+        for item in currency {
+          let action = UIAlertAction(title: item.rawValue, style: UIAlertAction.Style.default,handler: {
+            action -> Void in
+            self.selectCurrencyStore(store:item.rawValue)
+          })
+          let image = UIImage(named: item.rawValue)
+          action.setValue(image?.withRenderingMode(.alwaysOriginal), forKey: "image")
+          actionsheet.addAction(action)
+        }
+        actionsheet.addAction(UIAlertAction(title: "Cancel".localized, style: UIAlertAction.Style.cancel, handler: {
+          action -> Void in
+        }))
+        self.present(actionsheet, animated: true, completion: nil)
+      }
+    })
+  } */
+    
+    func currencynavigate(){
+        Client.shared.currencyCode(completion: {
+        response in
+        self.revealViewController().revealToggle(animated: true)
+        if let response = response{
+            let currency = response.nameIsoCode?.sorted{$0.name < $1.name}
+           
+          let actionsheet = UIAlertController(title: "Select Country", message: nil, preferredStyle: .alert)
+            for item in currency! {
+                print(item)
+               
+                let action = UIAlertAction(title: item.name, style: UIAlertAction.Style.default,handler: {
+              action -> Void in
+                    self.selectCurrencyStore(store: item.currencyCode)
+                    self.selectCountryStore(store:item.code)
+            })
+                actionsheet.addAction(action)
+           
+          }
+          actionsheet.addAction(UIAlertAction(title: "Cancel".localized, style: UIAlertAction.Style.cancel, handler: {
+            action -> Void in
+          }))
+          self.present(actionsheet, animated: true, completion: nil)
+        }
+      })
+    }
+    
+    
+  
+    func selectCurrencyStore(store:String){
+        CurrencyCode.shared.saveCurrencyCode(code: store)
+//      UserDefaults.standard.set(store, forKey: "mageCurrencyCode")
+//      Client.shared.saveCurrencyCode(currency: store)
+      load_app()
+    }
+    
+      func selectCountryStore(store:String){
+        UserDefaults.standard.removeObject(forKey: "countryCode")
+        UserDefaults.standard.set(store, forKey: "countryCode")
+        UserDefaults.standard.set(store, forKey: "mageCountryCode")
+        Client.shared.saveCountryCode(currency: store)
+        load_app()
+      }
+  
+  
+  func load_app()
+  {
+    /*let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+     rootviewcontroller.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SWRevealViewController")
+     let mainwindow = (UIApplication.shared.delegate?.window!)!
+     mainwindow.backgroundColor = UIColor(hue: 0.6477, saturation: 0.6314, brightness: 0.6077, alpha: 0.8)
+     UIView.transition(with: mainwindow, duration: 0.55001, options: .transitionFlipFromLeft, animations: { () -> Void in
+     }) { (finished) -> Void in
+     }*/
+    (UIApplication.shared.delegate as! AppDelegate).loadHomepage()
+  }
+  
+  func returnString(strToModify:String)->String{
+    if strToModify.contains("Optional"){
+      let sel=strToModify.components(separatedBy: "(")
+      let selected=sel[1].components(separatedBy: ")")
+      return selected[0]
+    }
+    return strToModify
+  }
+}

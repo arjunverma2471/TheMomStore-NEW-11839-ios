@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Medium.ttf">
+            <string>Cairo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartCheckoutCell" customModule="Magenative_App" customModuleProvider="target">
+            <connections>
+                <outlet property="checkoutOptions" destination="ifs-mE-ueg" id="elS-2U-3fn"/>
+                <outlet property="subTotal" destination="zaP-XG-59U" id="LiE-iu-HzD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY2-Jn-0fT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUBTOTAL: $121244" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaP-XG-59U">
+                            <rect key="frame" x="15" y="5" width="355" height="34"/>
+                            <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ifs-mE-ueg">
+                            <rect key="frame" x="10" y="79" width="355" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="yIp-mG-IZK"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ifs-mE-ueg" secondAttribute="bottom" constant="10" id="0Wh-Bj-MwE"/>
+                        <constraint firstItem="zaP-XG-59U" firstAttribute="leading" secondItem="fY2-Jn-0fT" secondAttribute="leading" constant="15" id="2UV-YE-cYP"/>
+                        <constraint firstItem="zaP-XG-59U" firstAttribute="top" secondItem="fY2-Jn-0fT" secondAttribute="top" constant="5" id="Qt1-XJ-91I"/>
+                        <constraint firstItem="ifs-mE-ueg" firstAttribute="leading" secondItem="fY2-Jn-0fT" secondAttribute="leading" constant="10" id="R47-D3-ES1"/>
+                        <constraint firstAttribute="trailing" secondItem="zaP-XG-59U" secondAttribute="trailing" constant="5" id="XcA-QJ-Tby"/>
+                        <constraint firstAttribute="trailing" secondItem="ifs-mE-ueg" secondAttribute="trailing" constant="10" id="n22-KO-aJ0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="fY2-Jn-0fT" secondAttribute="bottom" id="2jn-Ht-Qbe"/>
+                <constraint firstItem="fY2-Jn-0fT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="IHi-Ml-tov"/>
+                <constraint firstItem="fY2-Jn-0fT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="jPm-MV-mFW"/>
+                <constraint firstItem="fY2-Jn-0fT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nLM-eb-AAc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="35.5" y="-208"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

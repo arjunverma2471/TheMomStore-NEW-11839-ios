@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Medium.ttf">
+            <string>Cairo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="variantView" customModule="Magenative_Shopify_App" customModuleProvider="target">
+            <connections>
+                <outlet property="variantTitle" destination="jkL-3C-dwJ" id="UaV-f6-H1r"/>
+                <outlet property="variantViewHeight" destination="zMv-hz-I56" id="Hcs-nD-PB5"/>
+                <outlet property="variantViewOption" destination="t8p-FW-Yo3" id="Nfz-uP-wMH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="113"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkL-3C-dwJ">
+                    <rect key="frame" x="5" y="5" width="65" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="GJD-es-47j"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8p-FW-Yo3">
+                    <rect key="frame" x="5" y="52" width="372" height="52"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="zMv-hz-I56"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiR-Ge-C8C">
+                    <rect key="frame" x="5" y="109" width="372" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="vGO-EW-G8D"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGray4Color"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="t8p-FW-Yo3" secondAttribute="trailing" constant="12" id="3J5-fo-cfd"/>
+                <constraint firstItem="t8p-FW-Yo3" firstAttribute="leading" secondItem="jkL-3C-dwJ" secondAttribute="leading" id="4YQ-Vl-WsO"/>
+                <constraint firstItem="jkL-3C-dwJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="DsM-lo-UsV"/>
+                <constraint firstItem="jkL-3C-dwJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="TOj-bK-ISh"/>
+                <constraint firstItem="wiR-Ge-C8C" firstAttribute="top" secondItem="t8p-FW-Yo3" secondAttribute="bottom" constant="5" id="gSe-Vm-wLp"/>
+                <constraint firstItem="wiR-Ge-C8C" firstAttribute="trailing" secondItem="t8p-FW-Yo3" secondAttribute="trailing" id="rVD-Ck-tlU"/>
+                <constraint firstItem="t8p-FW-Yo3" firstAttribute="top" secondItem="jkL-3C-dwJ" secondAttribute="bottom" constant="5" id="u1m-Hm-WjV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wiR-Ge-C8C" secondAttribute="bottom" constant="3" id="zqV-h2-BRg"/>
+                <constraint firstItem="wiR-Ge-C8C" firstAttribute="leading" secondItem="jkL-3C-dwJ" secondAttribute="leading" id="zxo-ZJ-cZH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="143.19999999999999" y="226.23688155922042"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

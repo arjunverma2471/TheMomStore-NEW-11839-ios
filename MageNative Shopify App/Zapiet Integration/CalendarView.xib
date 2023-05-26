@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Medium.ttf">
+            <string>Cairo-Medium</string>
+        </array>
+        <array key="Cairo-Regular.ttf">
+            <string>Cairo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarView" customModule="Magenative_Shopify_App" customModuleProvider="target">
+            <connections>
+                <outlet property="calendar" destination="6m4-yP-KGu" id="dJW-1r-3F9"/>
+                <outlet property="cancelBtn" destination="vGA-Uz-1Rc" id="EqT-oR-TuM"/>
+                <outlet property="doneBtn" destination="Z1p-Td-Lkr" id="Rdh-jz-c44"/>
+                <outlet property="headingLabel" destination="v4R-W4-NFu" id="JZQ-jF-Ubk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="463" height="325"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT DATE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4R-W4-NFu">
+                    <rect key="frame" x="0.0" y="0.0" width="463" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="UwR-yt-SoC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6m4-yP-KGu" customClass="FSCalendar">
+                    <rect key="frame" x="8" y="38" width="447" height="231"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZNO-RO-UxO">
+                    <rect key="frame" x="8" y="277" width="447" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-Uz-1Rc">
+                            <rect key="frame" x="0.0" y="0.0" width="218.5" height="40"/>
+                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                            <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="18"/>
+                            <state key="normal" title="CANCEL">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1p-Td-Lkr">
+                            <rect key="frame" x="228.5" y="0.0" width="218.5" height="40"/>
+                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="18"/>
+                            <state key="normal" title="DONE">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="r6h-ID-zEM"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="6m4-yP-KGu" firstAttribute="top" secondItem="v4R-W4-NFu" secondAttribute="bottom" constant="8" symbolic="YES" id="4pu-gU-oKq"/>
+                <constraint firstAttribute="trailing" secondItem="v4R-W4-NFu" secondAttribute="trailing" id="C4S-z8-tHZ"/>
+                <constraint firstAttribute="trailing" secondItem="ZNO-RO-UxO" secondAttribute="trailing" constant="8" id="QCn-JD-nXh"/>
+                <constraint firstItem="6m4-yP-KGu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Z36-8m-cft"/>
+                <constraint firstItem="ZNO-RO-UxO" firstAttribute="top" secondItem="6m4-yP-KGu" secondAttribute="bottom" constant="8" id="cFp-6t-XPh"/>
+                <constraint firstItem="v4R-W4-NFu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i6p-sE-NH9"/>
+                <constraint firstAttribute="trailing" secondItem="6m4-yP-KGu" secondAttribute="trailing" constant="8" id="lTX-O5-DQ7"/>
+                <constraint firstItem="v4R-W4-NFu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pfT-h7-x83"/>
+                <constraint firstItem="ZNO-RO-UxO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="tgW-BW-VkI"/>
+                <constraint firstAttribute="bottom" secondItem="ZNO-RO-UxO" secondAttribute="bottom" constant="8" id="y67-rb-MJJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="413.768115942029" y="-28.459821428571427"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

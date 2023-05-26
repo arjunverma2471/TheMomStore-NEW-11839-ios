@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Medium.ttf">
+            <string>Cairo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductListCollectionCell" id="oQh-Om-6nh" customClass="ProductListCollectionCell" customModule="Magenative_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="279" height="116"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jeq-aI-7d6">
+                <rect key="frame" x="0.0" y="0.0" width="279" height="116"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AL-gE-Ubc">
+                        <rect key="frame" x="72.5" y="0.0" width="206.5" height="116"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6ZQ-C5-smU">
+                                <rect key="frame" x="15" y="28" width="191.5" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFj-47-AaJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="191.5" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="G3G-yT-VvQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71A-8H-A2c">
+                                        <rect key="frame" x="0.0" y="40" width="191.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="8gJ-no-frw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Cairo-Medium" family="Cairo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6ZQ-C5-smU" firstAttribute="leading" secondItem="6AL-gE-Ubc" secondAttribute="leading" constant="15" id="KNh-8i-pCI"/>
+                            <constraint firstAttribute="trailing" secondItem="6ZQ-C5-smU" secondAttribute="trailing" id="xtd-17-AdZ"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7vY-Ku-2j2">
+                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="116"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OutOfStock" translatesAutoresizingMaskIntoConstraints="NO" id="Hdl-hL-LKj">
+                        <rect key="frame" x="12.5" y="56" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="tYr-qn-dc6"/>
+                            <constraint firstAttribute="height" constant="60" id="wDg-z4-aD1"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Hdl-hL-LKj" firstAttribute="bottom" secondItem="7vY-Ku-2j2" secondAttribute="bottom" id="IuX-lS-HWx"/>
+                    <constraint firstItem="6ZQ-C5-smU" firstAttribute="centerY" secondItem="7vY-Ku-2j2" secondAttribute="centerY" id="Mao-eg-TAM"/>
+                    <constraint firstItem="Hdl-hL-LKj" firstAttribute="trailing" secondItem="7vY-Ku-2j2" secondAttribute="trailing" id="VaK-B0-IUS"/>
+                    <constraint firstItem="6AL-gE-Ubc" firstAttribute="leading" secondItem="7vY-Ku-2j2" secondAttribute="trailing" id="XzC-Qi-HLq"/>
+                    <constraint firstAttribute="bottom" secondItem="7vY-Ku-2j2" secondAttribute="bottom" id="dML-6D-8nD"/>
+                    <constraint firstItem="6AL-gE-Ubc" firstAttribute="top" secondItem="jeq-aI-7d6" secondAttribute="top" id="eA9-Rn-Pmr"/>
+                    <constraint firstAttribute="bottom" secondItem="6AL-gE-Ubc" secondAttribute="bottom" id="eyG-3D-Paa"/>
+                    <constraint firstItem="7vY-Ku-2j2" firstAttribute="top" secondItem="jeq-aI-7d6" secondAttribute="top" id="jOd-AN-36q"/>
+                    <constraint firstItem="7vY-Ku-2j2" firstAttribute="leading" secondItem="jeq-aI-7d6" secondAttribute="leading" id="kWT-dY-aix"/>
+                    <constraint firstAttribute="trailing" secondItem="6AL-gE-Ubc" secondAttribute="trailing" id="md5-1c-z2B"/>
+                    <constraint firstItem="7vY-Ku-2j2" firstAttribute="width" secondItem="jeq-aI-7d6" secondAttribute="width" multiplier="0.26" id="wb9-Kq-JOv"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="279" height="116"/>
+            <connections>
+                <outlet property="cellView" destination="6AL-gE-Ubc" id="4CJ-U9-00Y"/>
+                <outlet property="outOfStockImage" destination="Hdl-hL-LKj" id="UUh-Ee-gWm"/>
+                <outlet property="productImage" destination="7vY-Ku-2j2" id="s6V-FH-CMA"/>
+                <outlet property="productName" destination="RFj-47-AaJ" id="2wk-DG-rRc"/>
+                <outlet property="productPrice" destination="71A-8H-A2c" id="dYq-LT-Qzj"/>
+            </connections>
+            <point key="canvasLocation" x="292.02898550724638" y="210.26785714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="OutOfStock" width="420" height="429.5"/>
+    </resources>
+</document>

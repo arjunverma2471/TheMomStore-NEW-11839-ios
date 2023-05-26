@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="568" id="KGk-i7-Jjw" customClass="NativeAddAddressTVCelll" customModule="Magenative_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-TK-5OB">
+                        <rect key="frame" x="10" y="46" width="300" height="502"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YGa-ct-aPq">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-Vf-2Kg">
+                                <rect key="frame" x="0.0" y="46.5" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o5p-Xj-fBS">
+                                <rect key="frame" x="0.0" y="93" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDU-JY-dIp">
+                                <rect key="frame" x="0.0" y="139.5" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4f-Wv-5Kr">
+                                <rect key="frame" x="0.0" y="186" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utI-J7-tiM">
+                                <rect key="frame" x="0.0" y="232.5" width="300" height="37"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select Country"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iap-Mb-6Am">
+                                <rect key="frame" x="0.0" y="279.5" width="300" height="36.5"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select State"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhp-Dg-kiZ">
+                                <rect key="frame" x="0.0" y="326" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kGg-Nk-uTA">
+                                <rect key="frame" x="0.0" y="372.5" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGC-S3-b0f">
+                                <rect key="frame" x="0.0" y="419" width="300" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-be-2QT">
+                                <rect key="frame" x="0.0" y="465.5" width="300" height="36.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="PROCEED"/>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- OR --" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4J-yA-HP8">
+                        <rect key="frame" x="129" y="5" width="62.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Sfl-I1-KWE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="OVS-TK-5OB" secondAttribute="bottom" constant="20" id="7ja-gS-WLU"/>
+                    <constraint firstItem="OVS-TK-5OB" firstAttribute="top" secondItem="h4J-yA-HP8" secondAttribute="bottom" constant="20" id="EfD-7E-tfX"/>
+                    <constraint firstItem="OVS-TK-5OB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Py2-tl-2G3"/>
+                    <constraint firstItem="h4J-yA-HP8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QJh-2b-wa3"/>
+                    <constraint firstAttribute="trailing" secondItem="OVS-TK-5OB" secondAttribute="trailing" constant="10" id="pfh-PM-Ijp"/>
+                    <constraint firstItem="h4J-yA-HP8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="wbC-X3-NfL"/>
+                    <constraint firstItem="OVS-TK-5OB" firstAttribute="top" secondItem="h4J-yA-HP8" secondAttribute="bottom" constant="20" id="yyv-dH-Gah"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="address1" destination="UDU-JY-dIp" id="PQ3-Uu-XLx"/>
+                <outlet property="address2" destination="h4f-Wv-5Kr" id="bsr-Yq-i6u"/>
+                <outlet property="city" destination="uhp-Dg-kiZ" id="6Pg-f4-T9X"/>
+                <outlet property="email" destination="o5p-Xj-fBS" id="eLS-S3-rPp"/>
+                <outlet property="fname" destination="YGa-ct-aPq" id="edI-Vd-fv1"/>
+                <outlet property="lname" destination="sdk-Vf-2Kg" id="yCf-fu-4fl"/>
+                <outlet property="phone" destination="oGC-S3-b0f" id="Sc8-Ik-uXl"/>
+                <outlet property="saveAddress" destination="d0d-be-2QT" id="zx9-qu-qVm"/>
+                <outlet property="selectCountry" destination="utI-J7-tiM" id="cf0-bV-Xvz"/>
+                <outlet property="selectState" destination="Iap-Mb-6Am" id="ide-1Q-DoP"/>
+                <outlet property="zip" destination="kGg-Nk-uTA" id="J7v-9n-Jem"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="242.41071428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

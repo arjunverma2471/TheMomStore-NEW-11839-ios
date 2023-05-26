@@ -1,0 +1,57 @@
+//
+//  Electronic.json
+//  MageNative Shopify App
+//
+//  Created by cedcoss on 01/03/23.
+//  Copyright © 2023 MageNative. All rights reserved.
+//
+
+{
+"top-bar_1676353631":{
+"type":"top-bar",
+"timestamp":"1676353631",
+"uniqueId":"top-bar_1676353631",
+"search_position":"middle-width-search",
+"shape":"square",
+"search_placeholder":"Search",
+"wishlist":"1",
+"item_banner":"0",
+"item_dots":"1",
+"panel_background_color":"{\"color\":\"#ffffff\",\"opacity\":1,\"rgbastring\":\"rgba(255, 255, 255, 1)\"}",
+"count_color":"{\"color\":\"#fe5151\",\"opacity\":1,\"rgbastring\":\"rgba(254, 81, 81, 1)\"}",
+"count_textcolor":"{\"color\":\"#000000\",\"opacity\":1,\"rgbastring\":\"rgba(0, 0, 0, 1)\"}",
+"icon_color":"{\"color\":\"#dddddd\",\"opacity\":1,\"rgbastring\":\"rgba(221, 221, 221, 1)\"}",
+"active_dot_color":"{\"color\":\"#ffffff\",\"opacity\":1,\"rgbastring\":\"rgba(255, 255, 255, 1)\"}",
+"inactive_dot_color":"{\"color\":\"#aaaaaa\",\"opacity\":1,\"rgbastring\":\"rgba(170, 170, 170, 1)\"}",
+"search_background_color":"{\"color\":\"#dddddd\",\"opacity\":1,\"rgbastring\":\"rgba(221, 221, 221, 1)\"}",
+"search_text_color":"{\"color\":\"#dddddd\",\"opacity\":1,\"rgbastring\":\"rgba(221, 221, 221, 1)\"}",
+"search_border_color":"{\"color\":\"#dddddd\",\"opacity\":1,\"rgbastring\":\"rgba(221, 221, 221, 1)\"}",
+"item_total":""
+},
+"banner-slider_16763536401960":{
+"type":"banner-slider",
+"timestamp":"16763536401960",
+"uniqueId":"banner-slider_16763536401960",
+"item_dots":"1",
+"choiceList":"0",
+"active_dot_color":"{\"color\":\"#ffffff\",\"opacity\":1,\"rgbastring\":\"rgba(255, 255, 255, 1)\"}",
+"inactive_dot_color":"{\"color\":\"#aaaaaa\",\"opacity\":1,\"rgbastring\":\"rgba(170, 170, 170, 1)\"}",
+"item_total":"",
+"items":[
+{
+"link_type":"products",
+"link_value":"8123543945504",
+"image_url":"ChatGPT_logo"
+},
+{
+"link_type":"products",
+"link_value":"8126491885856",
+"image_url":"barcode"
+}
+]
+},
+"sort_order":{
+"top-bar_1676353631":0,
+"banner-slider_16763536401960":1
+}
+}

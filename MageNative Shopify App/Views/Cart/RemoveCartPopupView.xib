@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Light.ttf">
+            <string>Poppins-Light</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Sora-Regular.ttf">
+            <string>Sora-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RemoveCartPopupView" customModule="Magenative_App" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmationLabel" destination="X6O-jv-O99" id="kTX-aR-vGB"/>
+                <outlet property="moveToWishlistLabel" destination="AVk-ZV-HRK" id="zi0-91-6FC"/>
+                <outlet property="productImageView" destination="oGV-xb-Nh2" id="7Kj-O3-dKP"/>
+                <outlet property="removeButtonLabel" destination="3ry-DS-eA4" id="WvR-1F-I96"/>
+                <outlet property="removeCartLabel" destination="S10-HP-MIv" id="x9X-cX-2VT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDV-Fg-L7P">
+                    <rect key="frame" x="77" y="15" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove from cart?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S10-HP-MIv">
+                    <rect key="frame" x="77" y="10" width="100.5" height="13.5"/>
+                    <fontDescription key="fontDescription" name="Sora-Regular" family="Sora" pointSize="10.5"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to move this item from cart bag?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6O-jv-O99">
+                    <rect key="frame" x="77" y="28.5" width="163" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="JiV-XM-S3W"/>
+                        <constraint firstAttribute="width" constant="163" id="bKT-dI-Hpc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="9"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4wl-R1-cKk">
+                    <rect key="frame" x="16" y="105" width="268" height="27"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ry-DS-eA4">
+                            <rect key="frame" x="0.0" y="0.0" width="128" height="27"/>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10.5"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Remove">
+                                <color key="titleColor" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVk-ZV-HRK">
+                            <rect key="frame" x="140" y="0.0" width="128" height="27"/>
+                            <color key="backgroundColor" red="0.062745098039215685" green="0.20000000000000001" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10.5"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Move to Wishlist">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oGV-xb-Nh2">
+                    <rect key="frame" x="10" y="10" width="57" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="2Pr-dI-jsG"/>
+                        <constraint firstAttribute="height" constant="75" id="Spy-jh-xaB"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EDV-Fg-L7P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="3m7-Zx-rPH"/>
+                <constraint firstItem="X6O-jv-O99" firstAttribute="leading" secondItem="oGV-xb-Nh2" secondAttribute="trailing" constant="10" id="3vl-Qn-x3Q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4wl-R1-cKk" secondAttribute="trailing" constant="16" id="5ch-hj-7wn"/>
+                <constraint firstItem="S10-HP-MIv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="EhU-sc-a8C"/>
+                <constraint firstItem="4wl-R1-cKk" firstAttribute="top" secondItem="oGV-xb-Nh2" secondAttribute="bottom" constant="20" id="FrE-PT-ddi"/>
+                <constraint firstItem="X6O-jv-O99" firstAttribute="top" secondItem="S10-HP-MIv" secondAttribute="bottom" constant="5" id="KBH-Mr-4ue"/>
+                <constraint firstItem="oGV-xb-Nh2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="NJ2-X5-9X5"/>
+                <constraint firstItem="oGV-xb-Nh2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="R9t-uS-V0v"/>
+                <constraint firstItem="EDV-Fg-L7P" firstAttribute="leading" secondItem="oGV-xb-Nh2" secondAttribute="trailing" constant="10" id="dgI-b2-2Yc"/>
+                <constraint firstItem="4wl-R1-cKk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="qis-wX-Wi7"/>
+                <constraint firstItem="S10-HP-MIv" firstAttribute="leading" secondItem="oGV-xb-Nh2" secondAttribute="trailing" constant="10" id="thC-BZ-svP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="20.089285714285712"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
